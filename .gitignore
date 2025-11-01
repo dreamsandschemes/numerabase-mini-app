@@ -1,4 +1,39 @@
-# See https://help.github.com/articles/ignoring-files/ for more about ignoring files.
+# Dependencies
+node_modules/
+package-lock.json  # Optional: Keep if you want exact dependency versions
+
+# Build output
+.next/
+out/  # If using `next export`
+dist/
+
+# Logs and databases
+*.log
+*.sql
+*.sqlite
+
+# OS generated files
+.DS_Store
+Thumbs.db
+
+# Environment variables
+.env
+.env.local
+.env.development
+.env.production
+
+# IDE/Editor files
+.idea/
+.vscode/
+*.sublime-workspace
+
+# Web3-specific (OnchainKit, wallet data)
+keyfiles/  # If you add private keys later
+build/  # Contract builds (if using Hardhat/Truffle later)
+coverage/  # Test coverage
+
+# Vercel
+.vercel/# See https://help.github.com/articles/ignoring-files/ for more about ignoring files.
 
 # dependencies
 /node_modules
