@@ -1,7 +1,6 @@
 'use client';
 import { useState, useEffect } from 'react';
-import { NFTMintCard } from '@coinbase/onchainkit/nft';
-import { Wallet } from '@coinbase/onchainkit/wallet';
+import { NFTMintCard, Wallet } from '@coinbase/onchainkit/wallet';
 
 const reduceToSingleDigit = (num: number): number => {
   while (num > 9 && num !== 11 && num !== 22) {
@@ -116,7 +115,8 @@ export default function Home() {
                 Rarity: {getRarityPercentage()}% of {totalUsers} users have Life Path {lifePath}
               </p>
             )}
-            <NFTMintCard
+            {/* Temporarily comment out NFTMintCard until contract is deployed */}
+            {/* <NFTMintCard
               contractAddress="YOUR_CONTRACT_ADDRESS"
               tokenId={lifePath.toString()}
               chainId={8453}
@@ -124,7 +124,7 @@ export default function Home() {
             >
               <h3 className="text-purple-200">Mint Your Life Path NFT</h3>
               <p className="text-sm text-purple-300">Rarity: {getRarityPercentage()}% of {totalUsers} users</p>
-            </NFTMintCard>
+            </NFTMintCard> */}
             <button
               onClick={shareToFarcaster}
               className="w-full p-3 bg-indigo-500 hover:bg-indigo-600 rounded font-semibold transition"
