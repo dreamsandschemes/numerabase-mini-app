@@ -26,7 +26,7 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={`${geistSans.variable} ${geistMono.variable} antialiased`}>
-        <OnchainKitProvider apiKey={process.env.ONCHAINKIT_API_KEY} chainPreference={{ supportedChains: [8453] }}>
+        <OnchainKitProvider apiKey={process.env.ONCHAINKIT_API_KEY}>
           {children}
         </OnchainKitProvider>
       </body>
