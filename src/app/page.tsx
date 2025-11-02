@@ -1,15 +1,14 @@
 'use client';
 import { useState, useEffect } from 'react';
+import { NFTMintCard, Wallet } from '@coinbase/onchainkit'; // Ensure Wallet is imported
 
-// Helper function for numerology calculation
 const reduceToSingleDigit = (num: number): number => {
-  while (num > 9 && num !== 11 && num !== 22) { // Preserve master numbers
+  while (num > 9 && num !== 11 && num !== 22) {
     num = num.toString().split('').reduce((a, b) => a + parseInt(b), 0);
   }
   return num;
 };
 
-// Life Path descriptions
 const descriptions: Record<number, string> = {
   1: 'Leader! Bold and pioneering energy.',
   2: 'Peacemaker. Intuitive and cooperative.',
@@ -31,45 +30,32 @@ export default function Home() {
   const [lifePathCounts, setLifePathCounts] = useState<Record<number, number>>({});
   const [raritySubmitted, setRaritySubmitted] = useState(false);
 
-  // Load counters from localStorage on mount
   useEffect(() => {
     const savedCounts = localStorage.getItem('lifePathCounts');
-    if (savedCounts) {
-      setLifePathCounts(JSON.parse(savedCounts));
-    }
+    if (savedCounts) setLifePathCounts(JSON.parse(savedCounts));
   }, []);
 
-  // Save counters to localStorage on change
   useEffect(() => {
     localStorage.setItem('lifePathCounts', JSON.stringify(lifePathCounts));
   }, [lifePathCounts]);
 
   const calculate = () => {
     setError('');
-    console.log('Calculating with:', { birthdate });
-
     if (!/^\d{2}\/\d{2}\/\d{4}$/.test(birthdate)) {
       setError('Please enter birthdate as MM/DD/YYYY');
-      console.log('Birthdate validation failed');
       return;
     }
-
     const bdNums = birthdate.split('/').join('').split('').map(Number);
-    console.log('Birthdate nums:', bdNums);
     let lifePathNum = bdNums.reduce((a, b) => a + b, 0);
-    console.log('Life Path sum:', lifePathNum);
     lifePathNum = reduceToSingleDigit(lifePathNum);
-    console.log('Life Path result:', lifePathNum);
-
     setLifePath(lifePathNum);
-    setRaritySubmitted(false); // Reset submit state
+    setRaritySubmitted(false);
   };
 
   const submitRarity = () => {
     if (lifePath === 0) return;
     setLifePathCounts(prev => ({ ...prev, [lifePath]: (prev[lifePath] || 0) + 1 }));
     setRaritySubmitted(true);
-    console.log('Submitted Life Path:', lifePath, 'New counts:', lifePathCounts);
   };
 
   const getRarityPercentage = () => {
@@ -88,6 +74,7 @@ export default function Home() {
   return (
     <div className="min-h-screen bg-gradient-to-br from-purple-900 to-indigo-800 flex items-center justify-center p-4">
       <div className="bg-white bg-opacity-10 backdrop-blur-md rounded-lg p-8 max-w-md w-full">
+        <Wallet /> {/* Add Wallet component here */}
         <h1 className="text-3xl font-bold text-center mb-6 font-mono text-purple-200">
           NumeraBase: Unlock Your Life Path 🔮
         </h1>
@@ -128,6 +115,15 @@ export default function Home() {
                 Rarity: {getRarityPercentage()}% of {totalUsers} users have Life Path {lifePath}
               </p>
             )}
+            <NFTMintCard
+              contractAddress="YOUR_CONTRACT_ADDRESS"
+              tokenId={lifePath.toString()}
+              chainId={8453}
+              className="w-full"
+            >
+              <h3 className="text-purple-200">Mint Your Life Path NFT</h3>
+              <p className="text-sm text-purple-300">Rarity: {getRarityPercentage()}% of {totalUsers} users</p>
+            </NFTMintCard>
             <button
               onClick={shareToFarcaster}
               className="w-full p-3 bg-indigo-500 hover:bg-indigo-600 rounded font-semibold transition"
