@@ -1,6 +1,7 @@
 'use client';
 import { useState, useEffect } from 'react';
-import { NFTMintCard, Wallet } from '@coinbase/onchainkit/wallet';
+import { NFTMintCard } from '@coinbase/onchainkit/nft'; // Correct module for NFTMintCard
+import { Wallet } from '@coinbase/onchainkit/wallet'; // Correct module for Wallet
 
 const reduceToSingleDigit = (num: number): number => {
   while (num > 9 && num !== 11 && num !== 22) {
