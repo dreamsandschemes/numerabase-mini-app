@@ -1,7 +1,8 @@
 import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
-import { OnchainKitProvider, base } from '@coinbase/onchainkit'; // Import base chain
+import { OnchainKitProvider } from '@coinbase/onchainkit';
+import { base } from 'viem/chains';  // Import base chain from viem
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
