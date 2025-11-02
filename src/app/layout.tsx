@@ -1,8 +1,8 @@
+// src/app/layout.tsx (Server Component)
 import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
-import { OnchainKitProvider } from '@coinbase/onchainkit';
-import { defineChain } from 'viem'; // Import defineChain from viem
+import ClientLayout from "./ClientLayout"; // New Client Component
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -12,25 +12,6 @@ const geistSans = Geist({
 const geistMono = Geist_Mono({
   variable: "--font-geist-mono",
   subsets: ["latin"],
-});
-
-// Define Base mainnet chain
-const baseChain = defineChain({
-  id: 8453,
-  name: 'Base Mainnet',
-  network: 'base',
-  nativeCurrency: {
-    decimals: 18,
-    name: 'Ether',
-    symbol: 'ETH',
-  },
-  rpcUrls: {
-    default: { http: ['https://mainnet.base.org'] },
-    public: { http: ['https://mainnet.base.org'] },
-  },
-  blockExplorers: {
-    default: { name: 'Basescan', url: 'https://basescan.org' },
-  },
 });
 
 export const metadata: Metadata = {
@@ -46,9 +27,7 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={`${geistSans.variable} ${geistMono.variable} antialiased`}>
-        <OnchainKitProvider apiKey={process.env.ONCHAINKIT_API_KEY} chain={baseChain}>
-          {children}
-        </OnchainKitProvider>
+        <ClientLayout>{children}</ClientLayout>
       </body>
     </html>
   );
