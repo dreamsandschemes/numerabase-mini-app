@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
-import { OnchainKitProvider } from '@coinbase/onchainkit';
+import { OnchainKitProvider, base } from '@coinbase/onchainkit'; // Import base chain
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -26,7 +26,7 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={`${geistSans.variable} ${geistMono.variable} antialiased`}>
-        <OnchainKitProvider apiKey={process.env.ONCHAINKIT_API_KEY} chain={8453}>
+        <OnchainKitProvider apiKey={process.env.ONCHAINKIT_API_KEY} chain={base}>
           {children}
         </OnchainKitProvider>
       </body>
