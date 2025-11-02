@@ -10,7 +10,7 @@ const reduceToSingleDigit = (num: number): number => {
 };
 
 // Life Path descriptions
-const descriptions = {
+const descriptions: Record<number, string> = {
   1: 'Leader! Bold and pioneering energy.',
   2: 'Peacemaker. Intuitive and cooperative.',
   3: 'Creative communicator! Vibrant and expressive.',
@@ -22,7 +22,7 @@ const descriptions = {
   9: 'Humanitarian. Compassionate and visionary.',
   11: 'Master Illuminator. Highly intuitive.',
   22: 'Master Builder. Visionary and practical.'
-};
+} as const;
 
 export default function Home() {
   const [birthdate, setBirthdate] = useState('');
