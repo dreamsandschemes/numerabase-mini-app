@@ -1,6 +1,7 @@
 'use client';
 import { useState, useEffect } from 'react';
-import { NFTMintCard, Wallet } from '@coinbase/onchainkit'; // Ensure Wallet is imported
+import { NFTMintCard } from '@coinbase/onchainkit/nft';
+import { Wallet } from '@coinbase/onchainkit/wallet';
 
 const reduceToSingleDigit = (num: number): number => {
   while (num > 9 && num !== 11 && num !== 22) {
@@ -74,7 +75,7 @@ export default function Home() {
   return (
     <div className="min-h-screen bg-gradient-to-br from-purple-900 to-indigo-800 flex items-center justify-center p-4">
       <div className="bg-white bg-opacity-10 backdrop-blur-md rounded-lg p-8 max-w-md w-full">
-        <Wallet /> {/* Add Wallet component here */}
+        <Wallet />
         <h1 className="text-3xl font-bold text-center mb-6 font-mono text-purple-200">
           NumeraBase: Unlock Your Life Path 🔮
         </h1>
