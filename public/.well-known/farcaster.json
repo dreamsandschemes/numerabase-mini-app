@@ -5,7 +5,7 @@
     "signature": "YOUR_SIGNATURE_HERE"
   },
   "baseBuilder": {
-    "ownerAddress": "YOUR_WALLET_ADDRESS_HERE"
+    "ownerAddress": "0xa036c61d8be91a02838df996165fb3450cda4fac"
   },
   "miniapp": {
     "version": "1",
