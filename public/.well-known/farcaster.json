@@ -1,0 +1,33 @@
+{
+  "accountAssociation": {
+    "header": "eyJmaWQiOjkxNTIsInR5cGUiOiJjdXN0b2R5Iiwia2V5IjoiMHgwMmVmNzkwRGQ3OTkzQTM1ZkQ4NDdDMDUzRURkQUU5NDBEMDU1NTk2In0",
+    "payload": "eyJkb21haW4iOiJudW1lcmEuZHJlYW1zYW5kc2NoZW1lcy5hcnQifQ",
+    "signature": "YOUR_SIGNATURE_HERE"
+  },
+  "baseBuilder": {
+    "ownerAddress": "YOUR_WALLET_ADDRESS_HERE"
+  },
+  "miniapp": {
+    "version": "1",
+    "name": "NumeraBase",
+    "homeUrl": "https://numera.dreamsandschemes.art",
+    "iconUrl": "https://numera.dreamsandschemes.art/icon.png",
+    "splashImageUrl": "https://numera.dreamsandschemes.art/splash.png",
+    "splashBackgroundColor": "#0000FF",
+    "subtitle": "Unlock Your Life Path NFT",
+    "description": "Discover your Life Path destiny on Base. Mint your unique NFT! 🔮 Web3 awaits!",
+    "screenshotUrls": [
+      "https://numera.dreamsandschemes.art/screenshot1.png",
+      "https://numera.dreamsandschemes.art/screenshot2.png",
+      "https://numera.dreamsandschemes.art/screenshot3.png"
+    ],
+    "primaryCategory": "art-creativity",
+    "tags": ["nft", "numerology", "life-path", "web3"],
+    "heroImageUrl": "https://numera.dreamsandschemes.art/hero.png",
+    "tagline": "Mint Your Destiny",
+    "ogTitle": "NumeraBase - Life Path NFTs on Base",
+    "ogDescription": "Calculate and mint your unique Life Path NFT.",
+    "ogImageUrl": "https://numera.dreamsandschemes.art/og.png",
+    "noindex": false
+  }
+}
